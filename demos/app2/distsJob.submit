@@ -1,0 +1,25 @@
+#################
+# Job execution #
+#################
+Universe 		    = vanilla
+Executable      = /usr/local/bin/R
+Arguments       = --no-save --no-restore
+
+#############
+# Resources #
+#############
+request_cpus 	  = 12
+request_memory 	= 100 MB
+
+###############
+# Job scripts #
+###############
+input 		    	= dists.R
+output          = output.txt
+error           = error.txt
+Log             = log.txt
+
+########
+# Runs #
+########
+Queue   10

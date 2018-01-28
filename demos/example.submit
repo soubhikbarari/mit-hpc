@@ -1,0 +1,41 @@
+# ---------------------------------------------------------
+#
+# This is a template file for a Condor submit description file.
+# These files allow you to specify the parameters for your job(s)
+# (yeah, you can deploy multiple with just one file!) to submit
+# to the Condor system which will process your job in batch
+# on the HMDC cluster.
+#
+# To deploy a Condor job description file like this on your RCE account, 
+# simply open Terminal and type:
+#   
+#  `condor_submit myJobDesc.submit`
+#
+# For more details and advanced configurations, see:
+# http://research.cs.wisc.edu/htcondor/manual/current/condor_submit.html
+# ---------------------------------------------------------
+
+# The `Universe` is always `vanilla` for HMDC in our case 
+Universe 		= vanilla
+
+# Change this to match your exact R location
+# (this is the default location in RCE)
+Executable      = /usr/local/bin/R
+
+# These are specific to Condor
+Arguments       = --no-save --no-restore
+
+# Our specific hardware requests
+# (replace this with your specific needs)
+request_cpus 	= 10
+request_memory 	= 100 MB
+
+# The related files in the directory for our job 
+# (replace this with your specific directory's file)
+input 			= ./test.R
+output          = ./output.txt
+error           = ./error.txt
+Log             = ./log.txt
+
+# Queue only one run of this job
+Queue   1
